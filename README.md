@@ -23,4 +23,4 @@ Branch específica para códigos feitos por desafios da área de frontend. Cada 
 
 - Por já possuir experiência no frontend, em determinados trabalhos utilizei o Tailwind pela rapidez em desenvolver
 - Alguns trabalhos possuem desenvolvimento extra não solicitado pelo professor (exemplo: projeto formulário, tela de sucesso ao enviar o formulário)
-- Projeto de angular não possui deploy por necessitar de um banco de dados/backend rodando
+- Projeto de Angular não possui deploy por necessitar de um banco de dados/backend rodando
