@@ -1,0 +1,46 @@
+<div class="container-fluid">
+  <h3>Cadastro de Clientes</h3>
+  <div class="row">
+    <div class="col-sm-12">
+      <form [formGroup]="formCadastroCliente"
+            (submit)="onSaveCadastroCliente()" >
+        <div class="form-group col-sm-12 col-md-3">
+          <label for="nome">Nome</label>
+          <input
+            type="text"
+            class="form-control"
+            id="nome"
+            placeholder="Digite o Nome"
+            formControlName="nome"
+            [class.is-invalid]="nome?.invalid && (nome?.dirty || nome?.touched)"
+          />
+        </div>
+        <div class="form-group col-sm-12 col-md-3">
+            <label for="nome">Telefone</label>
+            <input
+              type="text"
+              class="form-control"
+              id="telefone"
+              placeholder="Digite o Telefone"
+              formControlName="telefone"
+              [class.is-invalid]="telefone?.invalid && (telefone?.dirty || telefone?.touched)"
+            />
+          </div>
+          <div class="form-group col-sm-12 col-md-3">
+            <label for="nome">E-mail</label>
+            <input
+              type="text"
+              class="form-control"
+              id="email"
+              placeholder="Digite o E-mail"
+              formControlName="email"
+              [class.is-invalid]="email?.invalid && (email?.dirty || email?.touched)"
+            />
+          </div>
+          <div class="col-auto me-auto">
+            <button type="submit" class="btn btn-success">Salvar</button>
+          </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Conversor de Moedas</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <style>
+      .spinner {
+        border: 4px solid rgba(0, 0, 0, 0.1);
+        border-left-color: #4299e1;
+        animation: spin 1s linear infinite;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        margin: 0 auto;
+        margin-bottom: 20px;
+        display: none;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 h-screen flex items-center justify-center">
+    <div class="bg-white p-8 rounded-lg shadow-md">
+      <h1 class="text-2xl font-bold mb-4">Conversor de Moedas</h1>
+      <div class="flex flex-col space-y-4">
+        <select id="currencyPair" class="bg-gray-100 border border-gray-300 rounded px-4 py-2">
+          <option value="USD-BRL">USD para BRL</option>
+          <option value="BRL-USD">BRL para USD</option>
+          <option value="BRL-AUD">BRL para AUD</option>
+          <option value="EUR-JPY">EUR para JPY</option>
+          <option value="USD-GBP">USD para GBP</option>
+          <option value="CAD-USD">CAD para USD</option>
+          <option value="GBP-CHF">GBP para CHF</option>
+          <option value="AUD-BRL">AUD para BRL</option>
+          <option value="JPY-EUR">JPY para EUR</option>
+          <option value="CHF-EUR">CHF para EUR</option>
+        </select>
+        <button id="convertBtn" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Converter</button>
+        <div class="spinner" id="spinner"></div>
+        <div id="formattedResult" class="border border-gray-300 p-4 rounded-lg">
+          <h2 class="text-lg font-bold mb-2">Dados Formatados</h2>
+          <pre id="formattedData" class="whitespace-pre-wrap"></pre>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.getElementById("convertBtn").addEventListener("click", () => {
+        const currencyPair = document.getElementById("currencyPair").value;
+        document.getElementById("spinner").style.display = "block";
+        fetch(`https://economia.awesomeapi.com.br/last/${currencyPair}`)
+          .then((response) => response.json())
+          .then((data) => {
+            const conversionData = data[currencyPair.replace("-", "")];
+            document.getElementById("formattedData").textContent = formatData(conversionData);
+          })
+          .catch((error) => {
+            console.error("Erro ao buscar os dados de conversão:", error);
+            document.getElementById("result").textContent = "Erro ao buscar os dados de conversão. Por favor, tente novamente mais tarde.";
+          })
+          .finally(() => {
+            document.getElementById("spinner").style.display = "none";
+          });
+      });
+
+      function formatData(data) {
+        return `
+            Código: ${data.code}
+            Código de Entrada: ${data.codein}
+            Nome: ${data.name}
+            Alta: ${data.high}
+            Baixa: ${data.low}
+            Variação do Lance: ${data.varBid}
+            Variação Percentual: ${data.pctChange}
+            Lance: ${data.bid}
+            Perguntar: ${data.ask}
+            Timestamp: ${data.timestamp}
+            Data de Criação: ${data.create_date}
+            `;
+      }
+    </script>
+  </body>
+</html>
