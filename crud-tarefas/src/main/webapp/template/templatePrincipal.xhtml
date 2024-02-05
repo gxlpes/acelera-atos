@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+  <title>Sistema Java WEB</title>
+</h:head>
+
+<h:body style="background-color: #ccc;">
+<ui:debug hotkey="x" rendered="#{initParam['javax.faces.FACELETS_DEVELOPMENT']}"/>
+
+<div id="header" style="border-color: 1px solid black;">
+    
+    <h1>Sistema Java WEB</h1>
+        
+</div>
+
+
+<div id="content" style="border-color: 1px solid black;">
+  <ui:insert name="content">
+    	Content area.  See comments below this line in the source.    	
+  </ui:insert>
+</div>
+
+<div id="footer" style="border-color: 1px solid black;">
+   	<h3>Rodapé</h3>  
+</div>
+
+</h:body>
+
+</html>
