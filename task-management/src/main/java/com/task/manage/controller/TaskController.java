@@ -37,7 +37,7 @@ public class TaskController {
     public String getTaskById(@PathVariable UUID id, Model model) {
         Task task = taskService.getTaskById(id);
         model.addAttribute("task", task);
-        return "update-task";
+        return "redirect:/";
     }
 
     @PostMapping("/tasks")
