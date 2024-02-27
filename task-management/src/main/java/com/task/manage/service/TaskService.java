@@ -1,8 +1,8 @@
-package com.taskmanagement.taskmanagegement.service;
+package com.task.manage.service;
 
 
-import com.taskmanagement.taskmanagegement.model.Task;
-import com.taskmanagement.taskmanagegement.repository.TaskRepository;
+import com.task.manage.model.Task;
+import com.task.manage.repository.TaskRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,7 +10,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
-public class TaskService {
+public class TaskService implements ITaskService {
 
     private final TaskRepository taskRepository;
 

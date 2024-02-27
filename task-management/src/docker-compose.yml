@@ -11,4 +11,4 @@ services:
       - task-management-volume:/var/lib/postgresql/data
 
 volumes:
-  task-management-volumne:
+  task-management-volume:

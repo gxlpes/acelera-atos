@@ -1,15 +1,15 @@
-package com.taskmanagement.taskmanagegement.controller;
+package com.task.manage.controller;
 
-import com.taskmanagement.taskmanagegement.model.Task;
-import com.taskmanagement.taskmanagegement.service.TaskService;
+import com.task.manage.model.Task;
+import com.task.manage.service.TaskService;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-@RestController
-@RequestMapping("/tasks")
+@Controller
 public class TaskController {
 
     private final TaskService taskService;
@@ -18,9 +18,16 @@ public class TaskController {
         this.taskService = taskService;
     }
 
-    @GetMapping
-    public List<Task> getAllTasks() {
-        return taskService.getAllTasks();
+
+    @GetMapping("/form")
+    public String showSignUpForm(Task task) {
+        return "form";
+    }
+
+    @GetMapping("/index")
+    public String getAllTasks(Model model) {
+        model.addAttribute("tasks", taskService.getAllTasks());
+        return "index";
     }
 
     @GetMapping("/{id}")
@@ -28,8 +35,8 @@ public class TaskController {
         return taskService.getTaskById(id);
     }
 
-    @PostMapping
-    public Task createTask(@RequestBody Task task) {
+    @PostMapping("/tasks")
+    public Task createTask(Task task) {
         return taskService.createTask(task);
     }
 

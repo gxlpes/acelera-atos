@@ -1,6 +1,6 @@
-package com.taskmanagement.taskmanagegement.repository;
+package com.task.manage.repository;
 
-import com.taskmanagement.taskmanagegement.model.Task;
+import com.task.manage.model.Task;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
