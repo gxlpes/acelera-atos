@@ -1,7 +1,0 @@
-<form action="#" th:action="@{/tasks}" th:object="${task}" method="post" xmlns:th="http://www.w3.org/1999/xhtml">
-    <label for="name">Name:</label><br>
-    <input type="text" id="name" name="name" th:field="*{name}"><br>
-    <label for="description">Description:</label><br>
-    <textarea id="description" name="description" th:field="*{description}"></textarea><br>
-    <button type="submit">Submit</button>
-</form>

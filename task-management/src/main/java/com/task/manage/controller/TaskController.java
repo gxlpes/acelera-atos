@@ -1,6 +1,7 @@
 package com.task.manage.controller;
 
 import com.task.manage.model.Task;
+import com.task.manage.repository.TaskRepository;
 import com.task.manage.service.TaskService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,31 +14,36 @@ import java.util.UUID;
 public class TaskController {
 
     private final TaskService taskService;
+    private final TaskRepository taskRepository;
 
-    public TaskController(TaskService taskService) {
+    public TaskController(TaskService taskService, TaskRepository taskRepository) {
         this.taskService = taskService;
+        this.taskRepository = taskRepository;
     }
-
 
     @GetMapping("/form")
     public String showSignUpForm(Task task) {
         return "form";
     }
 
-    @GetMapping("/index")
-    public String getAllTasks(Model model) {
+    @GetMapping
+    public String showAllTasks(Model model) {
         model.addAttribute("tasks", taskService.getAllTasks());
-        return "index";
+        model.addAttribute("task", new Task());
+        return "tasks";
     }
 
-    @GetMapping("/{id}")
-    public Task getTaskById(@PathVariable UUID id) {
-        return taskService.getTaskById(id);
+    @GetMapping("/task/{id}")
+    public String getTaskById(@PathVariable UUID id, Model model) {
+        Task task = taskService.getTaskById(id);
+        model.addAttribute("task", task);
+        return "update-task";
     }
 
     @PostMapping("/tasks")
-    public Task createTask(Task task) {
-        return taskService.createTask(task);
+    public String createTask(Task task) {
+        taskService.createTask(task);
+        return "redirect:/";
     }
 
     @PutMapping("/{id}")
@@ -45,9 +51,16 @@ public class TaskController {
         return taskService.updateTask(id, task);
     }
 
-    @DeleteMapping("/{id}")
-    public void deleteTask(@PathVariable UUID id) {
+    @PostMapping("/update/{id}")
+    public String editTask(@PathVariable("id") UUID id, Task task) {
+        taskService.updateTask(task.getId(), task);
+        return "redirect:/";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteTask(@PathVariable UUID id, Model model) {
         taskService.deleteTask(id);
+        return "redirect:/";
     }
 
 }

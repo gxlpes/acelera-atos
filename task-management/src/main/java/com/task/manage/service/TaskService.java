@@ -5,7 +5,6 @@ import com.task.manage.model.Task;
 import com.task.manage.repository.TaskRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -18,7 +17,7 @@ public class TaskService implements ITaskService {
         this.taskRepository = taskRepository;
     }
 
-    public List<Task> getAllTasks() {
+    public Iterable<Task> getAllTasks() {
         return taskRepository.findAll();
     }
 
@@ -56,6 +55,7 @@ public class TaskService implements ITaskService {
         if (id == null) {
             throw new IllegalArgumentException("ID cannot be null");
         }
+
         taskRepository.deleteById(id);
     }
 
