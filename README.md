@@ -18,7 +18,7 @@ Branch específica para códigos feitos por desafios da área de frontend. Cada 
 - [04-contador-palavra](https://65bfde9c9ae48693ab2a5e4d--comforting-axolotl-9cd8f1.netlify.app/)
 - [05-jogo-velha](https://65bfdfc4f775d991639d7e7d--benevolent-pithivier-16263e.netlify.app/)
 - [06-cotacao](https://65bfe0ce3dab3394a9de946b--jade-hotteok-60a35f.netlify.app/)
-- [08-react-biblioteca]
+- [08-react-biblioteca](https://super-moonbeam-d771f1.netlify.app/)
 
 ## Observações
 
