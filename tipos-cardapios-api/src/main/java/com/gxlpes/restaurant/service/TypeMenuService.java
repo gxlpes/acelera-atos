@@ -15,7 +15,7 @@ import java.util.List;
 @Service
 public class TypeMenuService {
 
-    private TypeMenuRepository typeMenuRepository;
+    private final TypeMenuRepository typeMenuRepository;
 
     public TypeMenuService(TypeMenuRepository typeMenuRepository) {
         this.typeMenuRepository = typeMenuRepository;
@@ -23,7 +23,7 @@ public class TypeMenuService {
 
     @Transactional
     public TypeMenu saveOrUpdate(TypeMenu typeMenu) {
-        TypeMenu existingType = typeMenuRepository.findByName(typeMenu.getName());
+        TypeMenu existingType = typeMenuRepository.findByNameOrderByAsc(typeMenu.getName());
 
         if (existingType != null && !existingType.getId().equals(typeMenu.getId())) {
             throw new RuntimeException("A type with the same name already exists.");
@@ -45,7 +45,7 @@ public class TypeMenuService {
             throw new RuntimeException("The name of the type must have at least 3 characters.");
         }
 
-        Page<TypeMenu> typeMenuPage = typeMenuRepository.findByNameContainingIgnoreCase(name, pageable);
+        Page<TypeMenu> typeMenuPage = typeMenuRepository.findByNameContainingIgnoreCaseOrderByAsc(name, pageable);
         if (typeMenuPage.isEmpty()) {
             throw new RuntimeException("No menus found with the provided name.");
         }
