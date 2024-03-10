@@ -1,0 +1,20 @@
+meta {
+  name: Alterar status
+  type: http
+  seq: 4
+}
+
+patch {
+  url: http://localhost:8080/tipos-cardapios10c948ca-eaa1-4104-acdb-9994709c6429/status/A
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "Your TypeMenu Name",
+    "description": "Your TypeMenu Description",
+    "status": "I" 
+  }
+  
+}

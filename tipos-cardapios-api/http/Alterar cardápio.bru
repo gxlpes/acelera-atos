@@ -1,0 +1,20 @@
+meta {
+  name: Alterar cardápio
+  type: http
+  seq: 3
+}
+
+put {
+  url: http://localhost:8080/tipos-cardapios
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "Your TypeMenu Name",
+    "description": "Your TypeMenu Description",
+    "status": "I" 
+  }
+  
+}

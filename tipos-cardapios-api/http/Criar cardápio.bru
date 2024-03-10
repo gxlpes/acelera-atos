@@ -1,0 +1,20 @@
+meta {
+  name: Criar cardápio
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:8080/tipos-cardapios
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "Teste",
+    "description": "Your TypeMenu Description",
+    "status": "I" 
+  }
+  
+}

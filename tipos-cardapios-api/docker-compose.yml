@@ -1,0 +1,14 @@
+version: '3'
+services:
+  tipos-cardapios-db:
+    image: postgres:latest
+    container_name: tipos-cardapios-db
+    environment:
+      POSTGRES_PASSWORD: mysecretpassword
+    ports:
+      - "5432:5432"
+    volumes:
+      - tipos-cardapios-volume:/var/lib/postgresql/data
+
+volumes:
+  tipos-cardapios-volume:

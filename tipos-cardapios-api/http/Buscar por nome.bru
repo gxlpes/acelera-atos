@@ -1,0 +1,16 @@
+meta {
+  name: Buscar por nome
+  type: http
+  seq: 5
+}
+
+get {
+  url: http://localhost:8080/tipos-cardapios?nome=YourTypeMenuAbc&pagina=20
+  body: none
+  auth: none
+}
+
+query {
+  nome: YourTypeMenuAbc
+  pagina: 20
+}
