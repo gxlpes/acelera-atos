@@ -1,14 +1,13 @@
 package com.gxlpes.restaurant.controller;
 
-import com.gxlpes.restaurant.service.TypeMenuService;
 import com.gxlpes.restaurant.model.TypeMenu;
+import com.gxlpes.restaurant.service.TypeMenuService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
-import java.util.List;
 
 @RestController
 @RequestMapping("/tipos-cardapios")
